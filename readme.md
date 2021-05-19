@@ -6,6 +6,12 @@ Jisho is a powerful Japanese-English dictionary and lets you find words, kanji a
 
 <br>
 
+# Downloads
+
+[NuGet Package](https://www.nuget.org/packages/JishoNET/)
+
+<br>
+
 # Usage
 To get a definition from the Jisho API here's what you should do:
 
