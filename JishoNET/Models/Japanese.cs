@@ -1,5 +1,5 @@
 using System;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace JishoNET.Models
 {
@@ -8,13 +8,13 @@ namespace JishoNET.Models
         /// <summary>
         /// Japanese word, shown in Kanji or Kana
         /// </summary>
-        [JsonProperty("word")]
+        [JsonPropertyName("word")]
         public String Word { get; set; }
 
         /// <summary>
         /// Kana reading of the word
         /// </summary>
-        [JsonProperty("reading")]
+        [JsonPropertyName("reading")]
         public String Reading { get; set; }
     }
 }

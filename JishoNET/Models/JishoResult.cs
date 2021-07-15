@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace JishoNET.Models
 {
@@ -9,13 +9,13 @@ namespace JishoNET.Models
         /// <summary>
         /// Meta data that is returned by the API
         /// </summary>
-        [JsonProperty("meta")]
+        [JsonPropertyName("meta")]
         public Meta Meta { get; set; }
 
         /// <summary>
         /// List of definitions that were returned by the API using the given search term keyword
         /// </summary>
-        [JsonProperty("data")]
+        [JsonPropertyName("data")]
         public List<JishoData> Data { get; set; }
 
         /// <summary>

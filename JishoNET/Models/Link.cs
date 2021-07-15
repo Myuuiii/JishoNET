@@ -1,5 +1,5 @@
 using System;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace JishoNET.Models
 {
@@ -8,13 +8,13 @@ namespace JishoNET.Models
         /// <summary>
         /// HyperLink Text
         /// </summary>
-        [JsonProperty("text")]
+        [JsonPropertyName("text")]
         public String Text { get; set; }
 
         /// <summary>
         /// HyperLink Target Url
         /// </summary>
-        [JsonProperty("url")]
+        [JsonPropertyName("url")]
         public String Url { get; set; }
     }
 }

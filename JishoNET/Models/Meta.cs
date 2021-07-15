@@ -1,5 +1,5 @@
 using System;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace JishoNET.Models
 {
@@ -8,7 +8,7 @@ namespace JishoNET.Models
         /// <summary>
         /// Http Response Code
         /// </summary>
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public Int32 Status { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 using System;
 using System.Net;
-using Newtonsoft.Json;
+using System.Text.Json;
 
 namespace JishoNET.Models
 {
@@ -26,7 +26,7 @@ namespace JishoNET.Models
                 webClient.Encoding = System.Text.Encoding.UTF8;
 
                 String jsonResponse = webClient.DownloadString(new Uri(BaseUrl + keyword));
-                JishoResult result = JsonConvert.DeserializeObject<JishoResult>(jsonResponse);
+                JishoResult result = JsonSerializer.Deserialize<JishoResult>(jsonResponse);
                 result.Success = true;
                 return result;
             }

@@ -1,5 +1,5 @@
 using System;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace JishoNET.Models
 {
@@ -8,19 +8,19 @@ namespace JishoNET.Models
         /// <summary>
         /// jmdict attribution
         /// </summary>
-        [JsonProperty("jmdict")]
+        [JsonPropertyName("jmdict")]
         public Boolean JmDict { get; set; }
 
         /// <summary>
         /// jmnedict attribution
         /// </summary>
-        [JsonProperty("jmnedict")]
+        [JsonPropertyName("jmnedict")]
         public Boolean JmneDict { get; set; }
 
         /// <summary>
         /// dbpedia attribution
         /// </summary>
-        [JsonProperty("dbpedia")]
+        [JsonPropertyName("dbpedia")]
         public Object DbPedia { get; set; }
     }
 }

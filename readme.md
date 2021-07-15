@@ -1,5 +1,14 @@
+<div align="center">
+    <img src="http://cdn.mutedevs.nl/nuget/JishoNET/icon.png" style="width: 150px" />
+
 # JishoNET
-API Wrapper for the Jisho API (v1)
+<hr />
+
+### API Wrapper for the Jisho API (v1)
+
+</div>
+
+
 
 This wrapper makes it easy to get definitions from Jisho.
 Jisho is a powerful Japanese-English dictionary and lets you find words, kanji and example sentences quickly and easily [Jisho Website](https://jisho.org/) 
@@ -7,8 +16,8 @@ Jisho is a powerful Japanese-English dictionary and lets you find words, kanji a
 <br>
 
 # Downloads
-
-[NuGet Package](https://www.nuget.org/packages/JishoNET/)
+**Stable builds can be found here**:
+[NuGet](https://www.nuget.org/packages/JishoNET/)
 
 <br>
 
