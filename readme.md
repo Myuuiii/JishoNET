@@ -1,5 +1,6 @@
 <div align="center">
-    <img src="http://cdn.mutedevs.nl/nuget/JishoNET/icon.png" style="width: 48px" />
+
+![JishoNET](http://cdn.mutedevs.nl/nuget/JishoNET/iconSmall.png)
 
 # JishoNET
 <hr />
