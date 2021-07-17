@@ -1,11 +1,14 @@
 <div align="center">
-    <img src="http://cdn.mutedevs.nl/nuget/JishoNET/icon.png" style="width: 100px" />
+
+![JishoNET](http://cdn.mutedevs.nl/nuget/JishoNET/iconSmall.png)
 
 # JishoNET
 <hr />
 
 ### API Wrapper for the Jisho API (v1)
-
+![Nuget Downloads](https://img.shields.io/nuget/dt/JishoNET?color=56D926&label=JishoNET%20Downloads)
+![GitHub Open Issues](https://img.shields.io/github/issues-raw/Myuuiii/JishoNET)
+![GitHUb Latest Version](https://img.shields.io/github/v/release/Myuuiii/JishoNET?label=Latest%20Release)
 </div>
 
 
