@@ -51,39 +51,21 @@ The `Meta` object contains one property called `Status`. This property contains 
 The `Data` list of objects contains all the definitions that were returned using your search query. Every `JishoData` object contains:
 
 
-## Slug
-The slug is the set of Kanji or Kana characters of the word you requested.
+| Property    |                                                                                                                                                                                                                  |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Slug        | The slug is the set of Kanji or Kana characters of the word you requested                                                                                                                                        |
+| IsCommon    | Indicates if the requested word is common in the Japanese Language                                                                                                                                               |
+| Tags        | Ay tags that have been added to the definition                                                                                                                                                                   |
+| Jlpt*       | Indicates in which level of the Japanese Language Proficiency Test this word will start appearing                                                                                                                |
+| Japanese    | All the Japanese reading for the word, this property contains a list of objects where `Word` is most often the reading in kanji and `Reading` is the reading written in kana characters.                         |
+| Senses      | All the English definitions of the word. This property contains an object with: All English Definitions, Parts of speech (e.g. "Noun"), Links, Tags, Restrictions, SeeAlso, Antonyms, Source, Info and Sentences |
+| Attribution | Contains attribution data                                                                                                                                                                                        |
 
-## Is Common
-Indicates if the word is common in the Japanese language
-
-## Tags
-Any tags that have been added to the definition
-
-## Jlpt
-Can be empty, indicates in which level of the JLPT the Kanji/Word will be included
-
-## Japanese
-All the Japanese readings for the word. Provides the `Word` (most often in Kanji characters) and the `Reading` which is written in Kana characters
-
-## Senses
-English definitions of the word. The senses object contains:
-
-- All English Definitions
-- Parts of Speech (e.g. "Noun")
-- Links 
-- Tags
-- Restrictions
-- SeeAlso (Linked Definitions)
-- Antonyms
-- Source
-- Info
-- Sentences (Example Sentences)
-
-## Attribution
-Contains information about attribution
-
+\* can be empty
 <br><br>
+
+# Future Updates
+- [ ] Quickly retrieve the top result from a query with "GetQuickDefinition(string request)"
 
 # Information
 If anything's not working feel free to create an issue and I'll take a look at it! I'll try to keep this wrapper working if the API updates. 
