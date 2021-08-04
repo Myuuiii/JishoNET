@@ -77,8 +77,5 @@ The `Data` list of objects contains all the definitions that were returned using
 \* can be empty
 <br><br>
 
-# Future Updates
-- [ ] Quickly retrieve the top result from a query with "GetQuickDefinition(string request)"
-
 # Information
 If anything's not working feel free to create an issue and I'll take a look at it! I'll try to keep this wrapper working if the API updates. 
