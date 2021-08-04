@@ -39,6 +39,13 @@ On the instance of `JishoClient` you just created you can execute the `GetDefini
 JishoResult result = client.GetDefinition("house");
 ```
 
+## Retrieving a quick definition
+A quick definition contains the top result from a query, the result will contain an English `Sense` object and a `Japanese` reading object.
+```cs
+QuickDefinition qDefinition = client.GetQuickDefinition("house");
+```
+
+
 ## Reading the data
 The root object of type `JishoResult` contains a `Meta` and `Data` property alongside the `Success` and `Exception` property which will return the exception if anything goes wrong during the creation and execution of the API call. This is purely for development purposes and if you manage to throw an exception let me know.
 
