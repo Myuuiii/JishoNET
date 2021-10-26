@@ -4,19 +4,19 @@ using System.Text.Json.Serialization;
 
 namespace JishoNET.Models
 {
-    public class JishoResult
+    public class JishoResult<T>
     {
         /// <summary>
         /// Meta data that is returned by the API
         /// </summary>
         [JsonPropertyName("meta")]
-        public Meta Meta { get; set; }
+        public JishoMeta Meta { get; set; }
 
         /// <summary>
         /// List of definitions that were returned by the API using the given search term keyword
         /// </summary>
         [JsonPropertyName("data")]
-        public List<JishoData> Data { get; set; }
+        public T Data { get; set; }
 
         /// <summary>
         /// Indicates if the request was executed successfully 

@@ -1,16 +1,17 @@
 using System;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace JishoNET.Models
 {
-	public class QuickDefinition
+	public class JishoQuickDefinition
 	{
-		public QuickDefinition() { }
+		public JishoQuickDefinition() { }
 
 		/// <summary>
-		/// Create a new <see cref="QuickDefinition" /> from a <see cref="JishoResult" />
+		/// Create a new <see cref="JishoQuickDefinition" /> from a <see cref="JishoResult" />
 		/// </summary>
-		public QuickDefinition(JishoResult result)
+		public JishoQuickDefinition(JishoResult<List<JishoDefinition>> result)
 		{
 
 			this.Meta = result.Meta;
@@ -26,7 +27,7 @@ namespace JishoNET.Models
 		/// <summary>
 		/// Meta data that is returned by the API
 		/// </summary>
-		public Meta Meta { get; set; }
+		public JishoMeta Meta { get; set; }
 
 		/// <summary>
 		/// Indicates if the request was executed successfully 
@@ -41,11 +42,11 @@ namespace JishoNET.Models
 		/// <summary>
 		/// Top result English Sense
 		/// </summary>
-		public Sense EnglishSense { get; set; }
+		public JishoEnglishSense EnglishSense { get; set; }
 
 		/// <summary>
 		/// Top result Japanese Reading 
 		/// </summary>
-		public Japanese JapaneseReading { get; set; }
+		public JishoJapaneseDefinition JapaneseReading { get; set; }
 	}
 }
