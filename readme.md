@@ -42,7 +42,7 @@ JishoResult<List<JishoDefinition>> result = client.GetDefinition("house");
 ## Retrieving a quick definition
 A quick definition contains the top result from a query, the result will contain an English `Sense` object and a `Japanese` reading object.
 ```cs
-JishoResult<List<JishoQuickDefinition>> qDefinition = client.GetQuickDefinition("house");
+JishoResult<JishoQuickDefinition> qDefinition = client.GetQuickDefinition("house");
 ```
 
 
