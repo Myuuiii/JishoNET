@@ -435,8 +435,8 @@ $RECYCLE.BIN/
 ##
 ## Visual Studio Code
 ##
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
+**.vscode/tasks.json
+**.vscode/launch.json
+**.vscode/extensions.json
+JishoNET.Tests/.vscode/tasks.json
+JishoNET.Tests/.vscode/launch.json
