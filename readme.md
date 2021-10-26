@@ -36,24 +36,18 @@ Using this client you can start retrieving definitions.
 ## Retrieving a definition
 On the instance of `JishoClient` you just created you can execute the `GetDefinition` method. As the argument for this method you provide the "keyword" to use in the search. This can be any English or Japanese word. The `GetDefinition` returns a `JishoResult` which will contain all the data sent back by the API.
 ```cs
-JishoResult result = client.GetDefinition("house");
+JishoResult<List<JishoDefinition>> result = client.GetDefinition("house");
 ```
 
 ## Retrieving a quick definition
 A quick definition contains the top result from a query, the result will contain an English `Sense` object and a `Japanese` reading object.
 ```cs
-QuickDefinition qDefinition = client.GetQuickDefinition("house");
+JishoResult<List<JishoQuickDefinition>> qDefinition = client.GetQuickDefinition("house");
 ```
 
 
 ## Reading the data
 The root object of type `JishoResult` contains a `Meta` and `Data` property alongside the `Success` and `Exception` property which will return the exception if anything goes wrong during the creation and execution of the API call. This is purely for development purposes and if you manage to throw an exception let me know.
-
-## Retrieving a quick definition
-A quick definition contains the top result from a query, the result will contain an English `Sense` object and a `Japanese` reading object.
-```cs
-QuickDefinition qDefinition = client.GetQuickDefinition("house");
-```
 
 <br>
 
