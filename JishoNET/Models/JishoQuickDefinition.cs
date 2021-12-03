@@ -11,13 +11,13 @@ namespace JishoNET.Models
 		/// <summary>
 		/// Create a new <see cref="JishoQuickDefinition" /> from a <see cref="JishoResult" />
 		/// </summary>
-		public JishoQuickDefinition(JishoResult<List<JishoDefinition>> result)
+		public JishoQuickDefinition(JishoResult result)
 		{
 
 			this.Meta = result.Meta;
 			this.Success = result.Success;
 			this.Exception = result.Exception;
-			if (result.Data.Count != 0 && result.Success && result.Meta.Status == 200)
+			if (result.Data.Length != 0 && result.Success && result.Meta.Status == 200)
 			{
 				this.EnglishSense = result.Data[0].Senses[0];
 				this.JapaneseReading = result.Data[0].Japanese[0];

@@ -5,9 +5,9 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Title>JishoNET</Title>
     <PackageId>JishoNET</PackageId>
-    <Version>1.1.0</Version>
+    <Version>1.2.1</Version>
     <Authors>Myuuiii</Authors>
-    <Company>SubSilence</Company>
+    <Company>Myuuiii Software Development</Company>
     <Description>Simple wrapper for the Japanese Jisho.org Dictionary API</Description>
     <PackageIconUrl>icon.png</PackageIconUrl>
     <PackageIcon>icon.png</PackageIcon>

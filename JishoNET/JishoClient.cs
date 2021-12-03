@@ -17,7 +17,7 @@ namespace JishoNET.Models
 		/// </summary>
 		/// <param name="keyword">Keyword used as a search term to find definitions</param>
 		/// <returns><see cref="JishoResult" /> containing all definitions</returns>
-		public JishoResult<List<JishoDefinition>> GetDefinition(String keyword)
+		public JishoResult GetDefinition(String keyword)
 		{
 			try
 			{
@@ -27,13 +27,13 @@ namespace JishoNET.Models
 				webClient.Encoding = System.Text.Encoding.UTF8;
 
 				String jsonResponse = webClient.DownloadString(new Uri(BaseUrl + keyword));
-				JishoResult<List<JishoDefinition>> result = JsonSerializer.Deserialize<JishoResult<List<JishoDefinition>>>(jsonResponse);
+				JishoResult result = JsonSerializer.Deserialize<JishoResult>(jsonResponse);
 				result.Success = true;
 				return result;
 			}
 			catch (Exception e)
 			{
-				return new JishoResult<List<JishoDefinition>>()
+				return new JishoResult()
 				{
 					Success = false,
 					Exception = e.ToString()
@@ -46,18 +46,18 @@ namespace JishoNET.Models
 		/// </summary>
 		/// <param name="keyword">Keyword used as a search term to quickly retrieve an English <see cref="JishoEnglishSense" /> and a <see cref="JishoJapaneseDefinition" /> Reading</param>
 		/// <returns><see cref="JishoQuickDefinition" /> containing the top English <see cref="JishoEnglishSense" />  and <see cref="JishoJapaneseDefinition" /> Reading of the search term OR null if no definition was found</returns>
-		public JishoResult<JishoQuickDefinition> GetQuickDefinition(String keyword)
+		public JishoQuickDefinition GetQuickDefinition(String keyword)
 		{
 			try
 			{
-				JishoResult<JishoQuickDefinition> result = new JishoResult<JishoQuickDefinition>();
-				result.Data = new JishoQuickDefinition(GetDefinition(keyword));
+				JishoQuickDefinition result = new JishoQuickDefinition();
+				result = new JishoQuickDefinition(GetDefinition(keyword));
 				result.Success = true;
 				return result;
 			}
 			catch (Exception e)
 			{
-				return new JishoResult<JishoQuickDefinition>()
+				return new JishoQuickDefinition()
 				{
 					Success = false,
 					Exception = e.ToString()
