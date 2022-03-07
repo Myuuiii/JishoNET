@@ -3,6 +3,9 @@
 ![JishoNET](http://cdn.mutedevs.nl/nuget/JishoNET/iconSmall.png)
 
 # JishoNET
+
+Thank you for 2K downloads of JishoNET!
+
 <hr />
 
 ### API Wrapper for the Jisho API (v1)
