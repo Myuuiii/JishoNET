@@ -3,31 +3,19 @@ name: .NET
 on: push
 
 jobs:
-  Build:
-    runs-on: self-hosted
-    steps:
-    - uses: actions/checkout@v2
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 6.0.x
-    - name: Restore dependencies
-      working-directory: "./JishoNET"
-      run: dotnet restore
-    - name: Build
-      working-directory: "./JishoNET"
-      run: dotnet build --no-restore
-  Test:
-    runs-on: self-hosted
-    steps:
-    - uses: actions/checkout@v2
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 6.0.x
-    - name: Restore dependencies
-      working-directory: "./JishoNET.Tests"
-      run: dotnet restore
-    - name: Test
-      working-directory: "./JishoNET.Tests"
-      run: dotnet test
+    Build:
+        runs-on: self-hosted
+        steps:
+            - uses: actions/checkout@v2
+            - name: Setup .NET
+              uses: actions/setup-dotnet@v1
+              with:
+                  dotnet-version: 6.0.x
+            - name: Restore dependencies
+              working-directory: "./JishoNET"
+              run: dotnet restore
+            - name: Build
+              working-directory: "./JishoNET"
+              run: dotnet build --no-restore
+            - name: Test
+              run: dotnet test --no-restore --verbosity normal
