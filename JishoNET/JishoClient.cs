@@ -38,13 +38,14 @@ namespace JishoNET.Models
 				};
 			}
 		}
-		
+
 		/// <summary>
 		/// Retrieve a list of results from the Jisho API using the given keyword as a search term
 		/// </summary>
 		/// <param name="keyword"></param>
 		/// <returns></returns>
-		public JishoResult<JishoDefinition[]> GetDefinition(String keyword) {
+		public JishoResult<JishoDefinition[]> GetDefinition(String keyword)
+		{
 			return this.GetDefinitionAsync(keyword).Result;
 		}
 
@@ -58,7 +59,8 @@ namespace JishoNET.Models
 			try
 			{
 				JishoResult<JishoQuickDefinition> result = new JishoResult<JishoQuickDefinition>();
-				result = new JishoResult<JishoQuickDefinition>() {
+				result = new JishoResult<JishoQuickDefinition>()
+				{
 					Data = new JishoQuickDefinition(await GetDefinitionAsync(keyword)),
 					Success = true,
 					Exception = null
@@ -67,8 +69,9 @@ namespace JishoNET.Models
 			}
 			catch (Exception e)
 			{
-				return new JishoResult<JishoQuickDefinition>() {
-					Success= false,
+				return new JishoResult<JishoQuickDefinition>()
+				{
+					Success = false,
 					Exception = e.ToString()
 				};
 			}
@@ -79,7 +82,8 @@ namespace JishoNET.Models
 		/// </summary>
 		/// <param name="keyword"></param>
 		/// <returns></returns>
-		public JishoResult<JishoQuickDefinition> GetQuickDefinition(String keyword) {
+		public JishoResult<JishoQuickDefinition> GetQuickDefinition(String keyword)
+		{
 			return this.GetQuickDefinitionAsync(keyword).Result;
 		}
 	}
