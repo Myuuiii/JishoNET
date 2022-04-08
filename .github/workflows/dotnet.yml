@@ -3,7 +3,7 @@ name: .NET
 on: push
 
 jobs:
-    build:
+    Build:
         runs-on: self-hosted
 
         steps:
@@ -16,3 +16,5 @@ jobs:
               run: dotnet restore
             - name: Build
               run: dotnet build --no-restore
+            - name: Test
+              run: dotnet test --no-restore --verbosity normal
