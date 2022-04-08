@@ -5,12 +5,15 @@ on: push
 jobs:
     Build:
         runs-on: self-hosted
+        strategy:
+            matrix:
+                dotnet-version: ["3.1.x", "5.0.x", "6.0.x"]
         steps:
             - uses: actions/checkout@v2
             - name: Setup .NET
-              uses: actions/setup-dotnet@v1
+              uses: actions/setup-dotnet@v2
               with:
-                  dotnet-version: 6.0.x
+                  dotnet-version: ${{ matrix.dotnet-version }}
             - name: Restore dependencies
               working-directory: "./JishoNET"
               run: dotnet restore
