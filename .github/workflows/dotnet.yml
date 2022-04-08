@@ -20,6 +20,3 @@ jobs:
             - name: Build
               working-directory: "./JishoNET"
               run: dotnet build --no-restore
-            - name: Test
-              working-directory: "./JishoNET.Tests"
-              run: dotnet test --no-restore --verbosity normal
