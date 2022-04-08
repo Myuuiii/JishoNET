@@ -18,20 +18,20 @@ namespace JishoNET.Models
 		/// </summary>
 		/// <param name="keyword">Keyword used as a search term to find definitions</param>
 		/// <returns><see cref="JishoResult" /> containing all definitions</returns>
-		public async Task<JishoResult<JishoDefinition>> GetDefinitionAsync(String keyword)
+		public async Task<JishoResult<JishoDefinition[]>> GetDefinitionAsync(String keyword)
 		{
 			try
 			{
 				HttpClient client = new HttpClient();
 				var response = await client.GetAsync(BaseUrl + keyword);
-				JishoResult<JishoDefinition> result = JsonSerializer.Deserialize<JishoResult<JishoDefinition>>(response.Content.ReadAsStringAsync().Result);
+				JishoResult<JishoDefinition[]> result = JsonSerializer.Deserialize<JishoResult<JishoDefinition[]>>(response.Content.ReadAsStringAsync().Result);
 				result.Meta.Status = ((int)response.StatusCode);
 				result.Success = true;
 				return result;
 			}
 			catch (Exception e)
 			{
-				return new JishoResult<JishoDefinition>()
+				return new JishoResult<JishoDefinition[]>()
 				{
 					Success = false,
 					Exception = e.ToString()
@@ -44,7 +44,7 @@ namespace JishoNET.Models
 		/// </summary>
 		/// <param name="keyword"></param>
 		/// <returns></returns>
-		public JishoResult<JishoDefinition> GetDefinition(String keyword) {
+		public JishoResult<JishoDefinition[]> GetDefinition(String keyword) {
 			return this.GetDefinitionAsync(keyword).Result;
 		}
 
@@ -53,20 +53,22 @@ namespace JishoNET.Models
 		/// </summary>
 		/// <param name="keyword">Keyword used as a search term to quickly retrieve an English <see cref="JishoEnglishSense" /> and a <see cref="JishoJapaneseDefinition" /> Reading</param>
 		/// <returns><see cref="JishoQuickDefinition" /> containing the top English <see cref="JishoEnglishSense" />  and <see cref="JishoJapaneseDefinition" /> Reading of the search term OR null if no definition was found</returns>
-		public async Task<JishoQuickDefinition> GetQuickDefinitionAsync(String keyword)
+		public async Task<JishoResult<JishoQuickDefinition>> GetQuickDefinitionAsync(String keyword)
 		{
 			try
 			{
-				JishoQuickDefinition result = new JishoQuickDefinition();
-				result = new JishoQuickDefinition(await GetDefinitionAsync(keyword));
-				result.Success = true;
+				JishoResult<JishoQuickDefinition> result = new JishoResult<JishoQuickDefinition>();
+				result = new JishoResult<JishoQuickDefinition>() {
+					Data = new JishoQuickDefinition(await GetDefinitionAsync(keyword)),
+					Success = true,
+					Exception = null
+				};
 				return result;
 			}
 			catch (Exception e)
 			{
-				return new JishoQuickDefinition()
-				{
-					Success = false,
+				return new JishoResult<JishoQuickDefinition>() {
+					Success= false,
 					Exception = e.ToString()
 				};
 			}
@@ -77,7 +79,7 @@ namespace JishoNET.Models
 		/// </summary>
 		/// <param name="keyword"></param>
 		/// <returns></returns>
-		public JishoQuickDefinition GetQuickDefinition(String keyword) {
+		public JishoResult<JishoQuickDefinition> GetQuickDefinition(String keyword) {
 			return this.GetQuickDefinitionAsync(keyword).Result;
 		}
 	}

@@ -16,7 +16,7 @@ namespace JishoNET.Models
 		/// Array of definitions that were returned by the API using the given search term keyword
 		/// </summary>
 		[JsonPropertyName("data")]
-		public T[] Data { get; set; }
+		public T Data { get; set; }
 
 		/// <summary>
 		/// Indicates if the request was executed successfully 
