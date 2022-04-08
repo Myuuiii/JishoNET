@@ -15,8 +15,6 @@ jobs:
               with:
                   dotnet-version: ${{ matrix.dotnet-version }}
             - name: Restore dependencies
-              working-directory: "./JishoNET"
               run: dotnet restore
             - name: Build
-              working-directory: "./JishoNET"
               run: dotnet build --no-restore
