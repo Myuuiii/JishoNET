@@ -4,9 +4,7 @@ on: push
 
 jobs:
   build:
-
     runs-on: self-hosted
-
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET
@@ -19,3 +17,17 @@ jobs:
     - name: Build
       working-directory: "./JishoNET"
       run: dotnet build --no-restore
+  test:
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.x
+    - name: Restore dependencies
+      working-directory: "./JishoNET.Tests"
+      run: dotnet restore
+    - name: Test
+      working-directory: "./JishoNET.Tests"
+      run: dotnet test --no-restore
