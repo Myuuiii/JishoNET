@@ -14,7 +14,7 @@ namespace JishoNET.Models
 		private static Uri BaseUrl = new Uri("https://jisho.org/api/v1/search/words?keyword=");
 
 		/// <summary>
-		/// Retrieve a a list of results from the Jisho API using the given keyword as a search term
+		/// Retrieve a list of results from the Jisho API using the given keyword as a search term asynchronously
 		/// </summary>
 		/// <param name="keyword">Keyword used as a search term to find definitions</param>
 		/// <returns><see cref="JishoResult" /> containing all definitions</returns>
@@ -38,9 +38,18 @@ namespace JishoNET.Models
 				};
 			}
 		}
+		
+		/// <summary>
+		/// Retrieve a list of results from the Jisho API using the given keyword as a search term
+		/// </summary>
+		/// <param name="keyword"></param>
+		/// <returns></returns>
+		public JishoResult<JishoDefinition> GetDefinition(String keyword) {
+			return this.GetDefinitionAsync(keyword).Result;
+		}
 
 		/// <summary>
-		/// Quickly retrieve the top most result from Jisho using the given keyword as a search term
+		/// Quickly retrieve the top most result from Jisho using the given keyword as a search term asynchronously
 		/// </summary>
 		/// <param name="keyword">Keyword used as a search term to quickly retrieve an English <see cref="JishoEnglishSense" /> and a <see cref="JishoJapaneseDefinition" /> Reading</param>
 		/// <returns><see cref="JishoQuickDefinition" /> containing the top English <see cref="JishoEnglishSense" />  and <see cref="JishoJapaneseDefinition" /> Reading of the search term OR null if no definition was found</returns>
@@ -61,6 +70,15 @@ namespace JishoNET.Models
 					Exception = e.ToString()
 				};
 			}
+		}
+
+		/// <summary>
+		/// Quickly retrieve the top most result from Jisho using the given keyword as a search term
+		/// </summary>
+		/// <param name="keyword"></param>
+		/// <returns></returns>
+		public JishoQuickDefinition GetQuickDefinition(String keyword) {
+			return this.GetQuickDefinitionAsync(keyword).Result;
 		}
 	}
 }
