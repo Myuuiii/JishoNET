@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using JishoNET.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -9,10 +10,10 @@ namespace JishoNET.Tests
 	public class Tests
 	{
 		[TestMethod("Get Normal Definition")]
-		public void GetNormalDefinition()
+		public async Task GetNormalDefinition()
 		{
 			JishoClient client = new JishoClient();
-			JishoResult result = client.GetDefinition("川口");
+			JishoResult<JishoDefinition> result = await client.GetDefinitionAsync("川口");
 
 			Assert.IsTrue(result.Success, "The request was not successful");
 			Assert.IsNull(result.Exception, "An exception occurred whilst executing the request");
@@ -20,10 +21,10 @@ namespace JishoNET.Tests
 		}
 
 		[TestMethod("Get Quick Definition")]
-		public void GetQuickDefinition()
+		public async Task GetQuickDefinition()
 		{
 			JishoClient client = new JishoClient();
-			JishoQuickDefinition qDef = client.GetQuickDefinition("川口");
+			JishoQuickDefinition qDef = await client.GetQuickDefinitionAsync("川口");
 
 			Assert.IsTrue(qDef.Success, "The request was not successful");
 			Assert.IsNull(qDef.Exception, "An exception occurred whilst executing the request");

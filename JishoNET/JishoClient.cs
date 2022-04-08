@@ -1,6 +1,8 @@
 using System;
 using System.Net;
+using System.Net.Http;
 using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace JishoNET.Models
 {
@@ -16,23 +18,20 @@ namespace JishoNET.Models
 		/// </summary>
 		/// <param name="keyword">Keyword used as a search term to find definitions</param>
 		/// <returns><see cref="JishoResult" /> containing all definitions</returns>
-		public JishoResult GetDefinition(String keyword)
+		public async Task<JishoResult<JishoDefinition>> GetDefinitionAsync(String keyword)
 		{
 			try
 			{
-				WebClient webClient = new WebClient();
-				webClient.Headers.Add(HttpRequestHeader.UserAgent, "Mozilla/5.0");
-				webClient.Headers.Add(HttpRequestHeader.AcceptCharset, "UTF-8");
-				webClient.Encoding = System.Text.Encoding.UTF8;
-
-				String jsonResponse = webClient.DownloadString(new Uri(BaseUrl + keyword));
-				JishoResult result = JsonSerializer.Deserialize<JishoResult>(jsonResponse);
+				HttpClient client = new HttpClient();
+				var response = await client.GetAsync(BaseUrl + keyword);
+				JishoResult<JishoDefinition> result = JsonSerializer.Deserialize<JishoResult<JishoDefinition>>(response.Content.ReadAsStringAsync().Result);
+				result.Meta.Status = ((int)response.StatusCode);
 				result.Success = true;
 				return result;
 			}
 			catch (Exception e)
 			{
-				return new JishoResult()
+				return new JishoResult<JishoDefinition>()
 				{
 					Success = false,
 					Exception = e.ToString()
@@ -45,12 +44,12 @@ namespace JishoNET.Models
 		/// </summary>
 		/// <param name="keyword">Keyword used as a search term to quickly retrieve an English <see cref="JishoEnglishSense" /> and a <see cref="JishoJapaneseDefinition" /> Reading</param>
 		/// <returns><see cref="JishoQuickDefinition" /> containing the top English <see cref="JishoEnglishSense" />  and <see cref="JishoJapaneseDefinition" /> Reading of the search term OR null if no definition was found</returns>
-		public JishoQuickDefinition GetQuickDefinition(String keyword)
+		public async Task<JishoQuickDefinition> GetQuickDefinitionAsync(String keyword)
 		{
 			try
 			{
 				JishoQuickDefinition result = new JishoQuickDefinition();
-				result = new JishoQuickDefinition(GetDefinition(keyword));
+				result = new JishoQuickDefinition(await GetDefinitionAsync(keyword));
 				result.Success = true;
 				return result;
 			}

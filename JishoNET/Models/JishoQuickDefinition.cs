@@ -11,7 +11,7 @@ namespace JishoNET.Models
 		/// <summary>
 		/// Create a new <see cref="JishoQuickDefinition" /> from a <see cref="JishoResult" />
 		/// </summary>
-		public JishoQuickDefinition(JishoResult result)
+		public JishoQuickDefinition(JishoResult<JishoDefinition> result)
 		{
 
 			this.Meta = result.Meta;
