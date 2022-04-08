@@ -10,7 +10,7 @@
 
 ## Downloads
 
-**Stable builds can be downloaded here: ** [GitHub Releases](https://github.com/Myuuiii/JishoNET/releases) and [Nuget.org](https://www.nuget.org/packages/JishoNET/) 
+**Stable builds can be downloaded here: ** [GitHub Releases](https://github.com/Myuuiii/JishoNET/releases) and [Nuget.org](https://www.nuget.org/packages/JishoNET/)
 
 **Development builds can be downloaded here:** [GitHub Releases](https://github.com/Myuuiii/JishoNET/releases)
 
