@@ -5,7 +5,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Title>JishoNET</Title>
     <PackageId>JishoNET</PackageId>
-    <Version>1.3.0-dev-2</Version>
+    <Version>1.3.0</Version>
     <Authors>Myuuiii</Authors>
     <Company>Myuuiii Software Development</Company>
     <Description>Simple wrapper for the Japanese Jisho.org Dictionary API</Description>
