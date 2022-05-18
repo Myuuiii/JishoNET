@@ -440,3 +440,5 @@ $RECYCLE.BIN/
 **.vscode/extensions.json
 JishoNET.Tests/.vscode/tasks.json
 JishoNET.Tests/.vscode/launch.json
+
+/out

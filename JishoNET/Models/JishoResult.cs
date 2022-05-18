@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace JishoNET.Models
 {
-	public class JishoResult
+	public class JishoResult<T>
 	{
 		/// <summary>
 		/// Meta data that is returned by the API
@@ -16,7 +16,7 @@ namespace JishoNET.Models
 		/// Array of definitions that were returned by the API using the given search term keyword
 		/// </summary>
 		[JsonPropertyName("data")]
-		public JishoDefinition[] Data { get; set; }
+		public T Data { get; set; }
 
 		/// <summary>
 		/// Indicates if the request was executed successfully 
