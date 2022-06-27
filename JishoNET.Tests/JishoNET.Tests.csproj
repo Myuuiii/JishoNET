@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\JishoNET\JishoNET.csproj" />
+    <ProjectReference Include="..\JishoNET.Kanji\JishoNET.Kanji.csproj" />
   </ItemGroup>
 
 </Project>

@@ -51,3 +51,18 @@ JishoQuickDefinition qDef = await client.GetQuickDefinitionAsync("川口");
 | Japanese    | All the Japanese reading for the word, this property contains a list of objects where `Word` is most often the reading in kanji and `Reading` is the reading written in kana characters.                         |
 | Senses      | All the English definitions of the word. This property contains an object with: All English Definitions, Parts of speech (e.g. "Noun"), Links, Tags, Restrictions, SeeAlso, Antonyms, Source, Info and Sentences |
 | Attribution | Contains attribution data                                                                                                                                                                                        |
+
+## Retrieving a kanji's information (requires JishoNET.Kanji)
+
+### Synchronous (Single Definition)
+
+```cs
+JishoResult<JishoKanjiDefinition> kanji = client.GetKanjiDefinition("川");
+```
+
+### Asynchronous
+
+```cs
+JishoResult<JishoKanjiDefinition> kanji = await client.GetKanjiDefinitionAsync("川");
+```
+
