@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using JishoNET.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -21,7 +22,8 @@ namespace JishoNET.Tests
 		}
 
 		[TestMethod("Get Normal Definition (SYNC)")]
-		public void GetNormalDefinition() {
+		public void GetNormalDefinition()
+		{
 			JishoClient client = new JishoClient();
 			JishoResult<JishoDefinition[]> result = client.GetDefinition("川口");
 
@@ -43,7 +45,8 @@ namespace JishoNET.Tests
 		}
 
 		[TestMethod("Get Quick Definition (SYNC)")]
-		public void GetQuickDefinition() {
+		public void GetQuickDefinition()
+		{
 			JishoClient client = new JishoClient();
 			JishoResult<JishoQuickDefinition> qDef = client.GetQuickDefinition("川口");
 
@@ -51,6 +54,20 @@ namespace JishoNET.Tests
 			Assert.IsNull(qDef.Exception, "An exception occurred whilst executing the request");
 			Assert.IsNotNull(qDef.Data.JapaneseReading, "The Japanese Reading was null");
 			Assert.IsNotNull(qDef.Data.EnglishSense, "The English Definition was null");
+		}
+
+		[TestMethod("Get Kanji by extension package (ASYNC)")]
+		public async Task GetKanjiDefinition()
+		{
+			JishoClient client = new JishoClient();
+			JishoResult<JishoKanjiDefinition> result = await client.GetKanjiDefinitionAsync("鬱");
+
+			Assert.IsTrue(result.Success, "The request was not successful");
+			Assert.IsNull(result.Exception, "An exception occurred whilst executing the request");
+			Assert.IsNotNull(result.Data, "The result did not contain any data");
+			Assert.IsTrue(result.Data.Meanings.Any());
+			Assert.IsTrue(result.Data.OnyomiReadings.Any());
+			Assert.IsTrue(result.Data.KunyomiReadings.Any());
 		}
 	}
 }
