@@ -9,7 +9,7 @@ namespace JishoNET.Models
 	/// <summary>
 	/// Jisho API Client used to retrieve definitions
 	/// </summary>
-	public partial class JishoClient
+	public class JishoClient
 	{
 		private static Uri BaseUrl = new Uri("https://jisho.org/api/v1/search/words?keyword=");
 
