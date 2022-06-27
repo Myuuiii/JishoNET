@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JishoNET", "JishoNET\JishoN
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JishoNET.Tests", "JishoNET.Tests\JishoNET.Tests.csproj", "{47F0A698-DDDF-48B4-8ED4-08B4B8E6F4E6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JishoNET.Kanji", "JishoNET.Kanji\JishoNET.Kanji.csproj", "{8BA1B62F-2896-4C58-9CC4-26AEE521D8D4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{47F0A698-DDDF-48B4-8ED4-08B4B8E6F4E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47F0A698-DDDF-48B4-8ED4-08B4B8E6F4E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47F0A698-DDDF-48B4-8ED4-08B4B8E6F4E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BA1B62F-2896-4C58-9CC4-26AEE521D8D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BA1B62F-2896-4C58-9CC4-26AEE521D8D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BA1B62F-2896-4C58-9CC4-26AEE521D8D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BA1B62F-2896-4C58-9CC4-26AEE521D8D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
