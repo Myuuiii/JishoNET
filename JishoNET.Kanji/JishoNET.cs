@@ -16,7 +16,7 @@ namespace JishoNET
 
 			try
 			{
-				string htmlData = new HttpClient().GetAsync(request).Result.Content.ReadAsStringAsync().Result;
+				string htmlData = await new HttpClient().GetAsync(request).Result.Content.ReadAsStringAsync();
 				HtmlDocument htmlDocument = new HtmlDocument();
 				htmlDocument.LoadHtml(htmlData);
 
