@@ -57,10 +57,24 @@ namespace JishoNET.Tests
 		}
 
 		[TestMethod("Get Kanji by extension package (ASYNC)")]
-		public async Task GetKanjiDefinition()
+		public async Task GetKanjiDefinitionAsync()
 		{
 			JishoClient client = new JishoClient();
 			JishoResult<JishoKanjiDefinition> result = await client.GetKanjiDefinitionAsync("鬱");
+
+			Assert.IsTrue(result.Success, "The request was not successful");
+			Assert.IsNull(result.Exception, "An exception occurred whilst executing the request");
+			Assert.IsNotNull(result.Data, "The result did not contain any data");
+			Assert.IsTrue(result.Data.Meanings.Any());
+			Assert.IsTrue(result.Data.OnyomiReadings.Any());
+			Assert.IsTrue(result.Data.KunyomiReadings.Any());
+		}
+
+		[TestMethod("Get Kanji by extension package (SYNC)")]
+		public void GetKanjiDefinitionSync()
+		{
+			JishoClient client = new JishoClient();
+			JishoResult<JishoKanjiDefinition> result = client.GetKanjiDefinition("鬱");
 
 			Assert.IsTrue(result.Success, "The request was not successful");
 			Assert.IsNull(result.Exception, "An exception occurred whilst executing the request");
