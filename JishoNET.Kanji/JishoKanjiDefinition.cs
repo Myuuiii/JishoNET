@@ -7,7 +7,7 @@ namespace JishoNET.Models
 		/// <summary>
 		/// The kanji character.
 		/// </summary>
-		public String Kanji;
+		public string Kanji;
 
 		/// <summary>
 		/// The meanings of the kanji.
