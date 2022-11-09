@@ -11,7 +11,7 @@ namespace JishoNET
 	{
 		public static async Task<JishoResult<JishoKanjiDefinition>> GetKanjiDefinitionAsync(this JishoClient client, string keyword)
 		{
-			string kanjiUrlBase = "https://jisho.org/search/";
+			const string kanjiUrlBase = "https://jisho.org/search/";
 			string request = $"{kanjiUrlBase}{keyword} %23kanji";
 
 			try
@@ -20,10 +20,11 @@ namespace JishoNET
 				HtmlDocument htmlDocument = new HtmlDocument();
 				htmlDocument.LoadHtml(htmlData);
 
-				JishoKanjiDefinition result = new JishoKanjiDefinition();
-
-				// Save the user input as the kanji
-				result.Kanji = keyword;
+				JishoKanjiDefinition result = new JishoKanjiDefinition
+				{
+					// Save the user input as the kanji
+					Kanji = keyword
+				};
 
 				// Get the meaning of the kanji from the node with class kanji-details__main-meanings
 				HtmlNode meaningNode = htmlDocument.DocumentNode.SelectSingleNode("//div[@class='kanji-details__main-meanings']");
@@ -33,21 +34,12 @@ namespace JishoNET
 				HtmlNode readingsNode = htmlDocument.DocumentNode.SelectSingleNode("//div[@class='kanji-details__main-readings']");
 
 				// In the readings node there are 2 nodes that need to be processed. 
-				HtmlNode KunyomiNode = readingsNode.SelectSingleNode("//*[@class='dictionary_entry kun_yomi']");
-				HtmlNode OnyomiNode = readingsNode.SelectNodes("//*[@class='dictionary_entry on_yomi']").Last();
-
-				List<string> kunyomiReadings = new List<string>();
-				List<string> onyomiReadings = new List<string>();
-
-				// For each node, extract all the anchor tags and save their inner text, trimmed to a list
-				foreach (HtmlNode node in KunyomiNode.Descendants().Where(x => x.Name == "a"))
-					kunyomiReadings.Add(node.InnerText.Trim());
-				foreach (HtmlNode node in OnyomiNode.Descendants().Where(x => x.Name == "a"))
-					onyomiReadings.Add(node.InnerText.Trim());
+				HtmlNode kunyomiNode = readingsNode.SelectSingleNode("//*[@class='dictionary_entry kun_yomi']");
+				HtmlNode onyomiNode = readingsNode.SelectNodes("//*[@class='dictionary_entry on_yomi']").Last();
 
 				// Save the lists as arrays to the result
-				result.KunyomiReadings = kunyomiReadings.ToArray();
-				result.OnyomiReadings = onyomiReadings.ToArray();
+				result.KunyomiReadings = kunyomiNode.Descendants().Where(x => x.Name == "a").Select(node => node.InnerText.Trim()).ToArray();
+				result.OnyomiReadings = onyomiNode.Descendants().Where(x => x.Name == "a").Select(node => node.InnerText.Trim()).ToArray();
 
 				// Get kanji stroke count (class kanji-details__stroke_count)
 				HtmlNode strokeCountNode = htmlDocument.DocumentNode.SelectSingleNode("//*[@class='kanji-details__stroke_count']");
@@ -55,7 +47,7 @@ namespace JishoNET
 
                 // Get the JLPT level, if exists, from the node with class jlpt
                 HtmlNode jlptNode = htmlDocument.DocumentNode.SelectSingleNode("//div[@class='jlpt']/strong");
-				var jlptText = jlptNode?.InnerText;
+				string jlptText = jlptNode?.InnerText;
 				// if the string fits the form, "N#" where '#' is an integer, 1-9
                 if (jlptText != null && jlptText.Length > 1 && jlptText[0] == 'N' && jlptText[1] > '0' && jlptText[1] <= '9')
 					result.Jlpt = jlptText[1] - 0x30;
