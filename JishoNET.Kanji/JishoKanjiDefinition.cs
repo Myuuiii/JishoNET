@@ -29,5 +29,11 @@ namespace JishoNET.Models
 		/// </summary>
 		/// <value></value>
 		public int Strokes { get; set; }
-	}
+
+        /// <summary>
+        /// The JLPT level at which this kanji will start appearing
+        /// </summary>
+        /// <value></value>
+        public int? Jlpt { get; set; }
+    }
 }
