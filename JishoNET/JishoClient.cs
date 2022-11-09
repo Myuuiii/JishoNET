@@ -11,7 +11,7 @@ namespace JishoNET.Models
 	/// </summary>
 	public class JishoClient
 	{
-		private static Uri BaseUrl = new Uri("https://jisho.org/api/v1/search/words?keyword=");
+		private static readonly Uri BaseUrl = new Uri("https://jisho.org/api/v1/search/words?keyword=");
 
 		/// <summary>
 		/// Retrieve a list of results from the Jisho API using the given keyword as a search term asynchronously
@@ -23,7 +23,7 @@ namespace JishoNET.Models
 			try
 			{
 				HttpClient client = new HttpClient();
-				var response = await client.GetAsync(BaseUrl + keyword);
+				HttpResponseMessage response = await client.GetAsync(BaseUrl + keyword);
 				JishoResult<JishoDefinition[]> result = JsonSerializer.Deserialize<JishoResult<JishoDefinition[]>>(response.Content.ReadAsStringAsync().Result);
 				result.Meta.Status = ((int)response.StatusCode);
 				result.Success = true;
@@ -46,7 +46,7 @@ namespace JishoNET.Models
 		/// <returns></returns>
 		public JishoResult<JishoDefinition[]> GetDefinition(String keyword)
 		{
-			return this.GetDefinitionAsync(keyword).Result;
+			return GetDefinitionAsync(keyword).Result;
 		}
 
 		/// <summary>
@@ -58,8 +58,7 @@ namespace JishoNET.Models
 		{
 			try
 			{
-				JishoResult<JishoQuickDefinition> result = new JishoResult<JishoQuickDefinition>();
-				result = new JishoResult<JishoQuickDefinition>()
+				JishoResult<JishoQuickDefinition> result = new JishoResult<JishoQuickDefinition>()
 				{
 					Data = new JishoQuickDefinition(await GetDefinitionAsync(keyword)),
 					Success = true,
@@ -84,7 +83,7 @@ namespace JishoNET.Models
 		/// <returns></returns>
 		public JishoResult<JishoQuickDefinition> GetQuickDefinition(String keyword)
 		{
-			return this.GetQuickDefinitionAsync(keyword).Result;
+			return GetQuickDefinitionAsync(keyword).Result;
 		}
 	}
 }
