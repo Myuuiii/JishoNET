@@ -32,3 +32,8 @@ if you are using release 1.3.0 or higher you are able to also use the "**JishoNE
 ## Documentation
 
 If you need help getting started or need more information, please go to the `JishoNET.Docs` folder.
+
+
+## Contributions
+
+A big thank you to @johnW-ret for contributing to this project!
