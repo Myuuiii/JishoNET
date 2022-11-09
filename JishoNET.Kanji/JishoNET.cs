@@ -53,7 +53,14 @@ namespace JishoNET
 				HtmlNode strokeCountNode = htmlDocument.DocumentNode.SelectSingleNode("//*[@class='kanji-details__stroke_count']");
 				result.Strokes = int.Parse(strokeCountNode.InnerText.Replace("\n", "").Replace("strokes", "").Trim());
 
-				return new JishoResult<JishoKanjiDefinition>
+                // Get the JLPT level, if exists, from the node with class jlpt
+                HtmlNode jlptNode = htmlDocument.DocumentNode.SelectSingleNode("//div[@class='jlpt']/strong");
+				var jlptText = jlptNode?.InnerText;
+				// if the string fits the form, "N#" where '#' is an integer, 1-9
+                if (jlptText != null && jlptText.Length > 1 && jlptText[0] == 'N' && jlptText[1] > '0' && jlptText[1] <= '9')
+					result.Jlpt = jlptText[1] - 0x30;
+
+                return new JishoResult<JishoKanjiDefinition>
 				{
 					Data = result,
 					Success = true
