@@ -75,15 +75,15 @@ namespace JishoNET.Tests
         public async Task GetKanjiDefinitionWithJlptAsync()
         {
             JishoClient client = new JishoClient();
-            JishoResult<JishoKanjiDefinition> result = await client.GetKanjiDefinitionAsync("川");
+            JishoResult<JishoKanjiDefinition> result = await client.GetKanjiDefinitionAsync("個");
 
             Assert.IsTrue(result.Success, "The request was not successful");
             Assert.IsNull(result.Exception, "An exception occurred whilst executing the request");
             Assert.IsNotNull(result.Data, "The result did not contain any data");
             Assert.IsTrue(result.Data.Meanings.Any());
-            Assert.IsTrue(result.Data.OnyomiReadings.Any());
-            Assert.IsTrue(result.Data.KunyomiReadings.Any());
-            Assert.IsNotNull(result.Data.Jlpt);
+            Assert.IsNotNull(result.Data.OnyomiReadings.Any());
+            Assert.IsNotNull(result.Data.KunyomiReadings);
+            Assert.AreEqual(2, result.Data.Jlpt);
         }
 
         [TestMethod("Get Kanji by extension package (SYNC)")]
