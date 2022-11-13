@@ -50,6 +50,9 @@ namespace JishoNET
 				if (onyomiNode != null)
 					onyomiReadings.AddRange(onyomiNode.Descendants().Where(x => x.Name == "a")
 						.Select(node => node.InnerText.Trim()));
+
+				result.KunyomiReadings = kunyomiReadings.ToArray();
+				result.OnyomiReadings = onyomiReadings.ToArray();
         
 				// Get kanji stroke count (class kanji-details__stroke_count)
 				HtmlNode strokeCountNode =
