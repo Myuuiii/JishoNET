@@ -19,3 +19,7 @@ The onyomi readings of the kanji character
 ## "Strokes" `int`
 
 The amount of strokes required to write the kanji character
+
+## "Jlpt" `int?`
+
+The JLPT level at which this kanji will start appearing

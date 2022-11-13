@@ -21,10 +21,11 @@ namespace JishoNET
 				HtmlDocument htmlDocument = new HtmlDocument();
 				htmlDocument.LoadHtml(htmlData);
 
-				JishoKanjiDefinition result = new JishoKanjiDefinition();
-
-				// Save the user input as the kanji
-				result.Kanji = keyword;
+				JishoKanjiDefinition result = new JishoKanjiDefinition
+				{
+					// Save the user input as the kanji
+					Kanji = keyword
+				};
 
 				// Get the meaning of the kanji from the node with class kanji-details__main-meanings
 				HtmlNode meaningNode =
@@ -49,11 +50,7 @@ namespace JishoNET
 				if (OnyomiNode != null)
 					onyomiReadings.AddRange(OnyomiNode.Descendants().Where(x => x.Name == "a")
 						.Select(node => node.InnerText.Trim()));
-
-				// Save the lists as arrays to the result
-				result.KunyomiReadings = kunyomiReadings.ToArray();
-				result.OnyomiReadings = onyomiReadings.ToArray();
-
+        
 				// Get kanji stroke count (class kanji-details__stroke_count)
 				HtmlNode strokeCountNode =
 					htmlDocument.DocumentNode.SelectSingleNode("//*[@class='kanji-details__stroke_count']");
@@ -61,6 +58,7 @@ namespace JishoNET
 
 				// Get the JLPT level, if exists, from the node with class jlpt
 				HtmlNode jlptNode = htmlDocument.DocumentNode.SelectSingleNode("//div[@class='jlpt']/strong");
+
 				string jlptText = jlptNode?.InnerText;
 				// if the string fits the form, "N#" where '#' is an integer, 1-9
 				if (jlptText != null && jlptText.Length > 1 && jlptText[0] == 'N' && jlptText[1] > '0' && jlptText[1] <= '9')
