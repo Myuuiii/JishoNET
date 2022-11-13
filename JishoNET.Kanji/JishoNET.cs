@@ -37,18 +37,18 @@ namespace JishoNET
 					htmlDocument.DocumentNode.SelectSingleNode("//div[@class='kanji-details__main-readings']");
 
 				// In the readings node there are 2 nodes that need to be processed. 
-				HtmlNode KunyomiNode = readingsNode.SelectSingleNode("//*[@class='dictionary_entry kun_yomi']");
-				HtmlNode OnyomiNode = readingsNode.SelectNodes("//*[@class='dictionary_entry on_yomi']").Last();
+				HtmlNode kunyomiNode = readingsNode.SelectSingleNode("//*[@class='dictionary_entry kun_yomi']");
+				HtmlNode onyomiNode = readingsNode.SelectNodes("//*[@class='dictionary_entry on_yomi']").Last();
 
 				List<string> kunyomiReadings = new List<string>();
 				List<string> onyomiReadings = new List<string>();
 
 				// For each node, extract all the anchor tags and save their inner text, trimmed to a list
-				if (KunyomiNode != null)
-					kunyomiReadings.AddRange(KunyomiNode.Descendants().Where(x => x.Name == "a")
+				if (kunyomiNode != null)
+					kunyomiReadings.AddRange(kunyomiNode.Descendants().Where(x => x.Name == "a")
 						.Select(node => node.InnerText.Trim()));
-				if (OnyomiNode != null)
-					onyomiReadings.AddRange(OnyomiNode.Descendants().Where(x => x.Name == "a")
+				if (onyomiNode != null)
+					onyomiReadings.AddRange(onyomiNode.Descendants().Where(x => x.Name == "a")
 						.Select(node => node.InnerText.Trim()));
         
 				// Get kanji stroke count (class kanji-details__stroke_count)
