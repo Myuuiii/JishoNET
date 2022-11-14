@@ -6,18 +6,14 @@ namespace JishoNET.Models
 {
 	public class JishoQuickDefinition
 	{
-		public JishoQuickDefinition() { }
-
 		/// <summary>
 		/// Create a new <see cref="JishoQuickDefinition" /> from a <see cref="JishoResult" />
 		/// </summary>
 		public JishoQuickDefinition(JishoResult<JishoDefinition[]> result)
 		{
-			if (result.Data.Length != 0 && result.Success && result.Meta.Status == 200)
-			{
-				this.EnglishSense = result.Data[0].Senses[0];
-				this.JapaneseReading = result.Data[0].Japanese[0];
-			}
+			if (result.Data.Length == 0 || !result.Success || result.Meta.Status != 200) return;
+			EnglishSense = result.Data[0].Senses[0];
+			JapaneseReading = result.Data[0].Japanese[0];
 		}
 
 		/// <summary>

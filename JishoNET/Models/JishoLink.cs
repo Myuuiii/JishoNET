@@ -9,12 +9,12 @@ namespace JishoNET.Models
 		/// HyperLink Text
 		/// </summary>
 		[JsonPropertyName("text")]
-		public String Text { get; set; }
+		public string Text { get; set; }
 
 		/// <summary>
 		/// HyperLink Target Url
 		/// </summary>
 		[JsonPropertyName("url")]
-		public String Url { get; set; }
+		public string Url { get; set; }
 	}
 }

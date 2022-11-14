@@ -7,25 +7,25 @@ namespace JishoNET.Models
 	public class JishoDefinition
 	{
 		[JsonPropertyName("slug")]
-		public String Slug { get; set; }
+		public string Slug { get; set; }
 
 		/// <summary>
 		/// Indicates if the given word is commonly used in the Japanese language
 		/// </summary>
 		[JsonPropertyName("is_common")]
-		public Boolean IsCommon { get; set; }
+		public bool IsCommon { get; set; }
 
 		/// <summary>
 		/// Any tags that Jisho has attatched to this definition
 		/// </summary>
 		[JsonPropertyName("tags")]
-		public List<String> Tags { get; set; }
+		public List<string> Tags { get; set; }
 
 		/// <summary>
 		/// Starting JLPT level that the word or character cant be included in
 		/// </summary>
 		[JsonPropertyName("jlpt")]
-		public List<String> Jlpt { get; set; }
+		public List<string> Jlpt { get; set; }
 
 		/// <summary>
 		/// All Japanese Readings of the word or character

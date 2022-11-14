@@ -9,18 +9,18 @@ namespace JishoNET.Models
 		/// jmdict attribution
 		/// </summary>
 		[JsonPropertyName("jmdict")]
-		public Boolean JmDict { get; set; }
+		public bool JmDict { get; set; }
 
 		/// <summary>
 		/// jmnedict attribution
 		/// </summary>
 		[JsonPropertyName("jmnedict")]
-		public Boolean JmneDict { get; set; }
+		public bool JmneDict { get; set; }
 
 		/// <summary>
 		/// dbpedia attribution
 		/// </summary>
 		[JsonPropertyName("dbpedia")]
-		public Object DbPedia { get; set; }
+		public object DbPedia { get; set; }
 	}
 }

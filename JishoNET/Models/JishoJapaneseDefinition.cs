@@ -9,12 +9,12 @@ namespace JishoNET.Models
 		/// Japanese word, shown in Kanji or Kana
 		/// </summary>
 		[JsonPropertyName("word")]
-		public String Word { get; set; }
+		public string Word { get; set; }
 
 		/// <summary>
 		/// Kana reading of the word
 		/// </summary>
 		[JsonPropertyName("reading")]
-		public String Reading { get; set; }
+		public string Reading { get; set; }
 	}
 }

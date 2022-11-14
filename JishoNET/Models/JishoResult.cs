@@ -22,12 +22,12 @@ namespace JishoNET.Models
 		/// Indicates if the request was executed successfully 
 		/// </summary>
 		[JsonIgnore]
-		public Boolean Success { get; set; }
+		public bool Success { get; set; }
 
 		/// <summary>
 		/// Any exception information, this will only be provided if something goes wrong during the creation or processing of your request
 		/// </summary>
 		[JsonIgnore]
-		public String Exception { get; set; }
+		public string? Exception { get; set; }
 	}
 }

@@ -9,6 +9,6 @@ namespace JishoNET.Models
 		/// Http Response Code
 		/// </summary>
 		[JsonPropertyName("status")]
-		public Int32 Status { get; set; }
+		public int Status { get; set; }
 	}
 }
