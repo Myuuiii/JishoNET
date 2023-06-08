@@ -1,6 +1,6 @@
 <div align="center">
 
-![JishoNET](http://cdn.mutedevs.nl/nuget/JishoNET/iconSmall.png)
+![JishoNET](https://minio.myuuiii.com/myuuiii/Projects/JishoNET/icon.png)
 
 ## API Wrapper for the Jisho.org API (v1)
 
